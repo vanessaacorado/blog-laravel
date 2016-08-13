@@ -13,7 +13,7 @@ class PostRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class PostRequest extends Request
     {
         return [
             'title'=> 'required',
-            'content'=>'required'
+            'content'=>'required',
         ];
     }
 }

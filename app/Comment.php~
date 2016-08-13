@@ -1,9 +1,9 @@
 <?php
 
 namespace App;
-use App\Posts;
-use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\Model;
+use App\Posts;
 class Comment extends Model
 {
     //
@@ -17,4 +17,3 @@ class Comment extends Model
         
     }
 }
-	

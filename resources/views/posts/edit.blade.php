@@ -9,7 +9,7 @@
    	</ul>
    @endif
    
-    {!! Form::open(['method'=>'post', 'route'=>'admin.store']) !!}
+    {!! Form::model($post,['method'=>'put', 'route'=>['admin.update', $post->id]]) !!}
     @include('posts._form');
     <div id="form-group">
         {!! Form::submit('Criar Novo Post',['class'=>'btn btn-primary']) !!}
