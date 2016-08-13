@@ -19,7 +19,7 @@ $factory->define(App\User::class, function ($faker) {
         'remember_token' => str_random(10),
     ];
 });
-$factory->define(App\Posts::class, function (Faker\Generator $faker) {
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->sentence,
         'content' => $faker->paragraph,
@@ -33,7 +33,7 @@ $factory->define(App\Comment::class, function (Faker\Generator $faker) {
         'nome' => $faker->sentence,
         'email' => $faker->sentence,
         'comment' => $faker->paragraph,
-        'post_id'=>factory(App\Posts::class)->create()->id,
+        'post_id'=>factory(App\Post::class)->create()->id,
     ];
 }); 
 $factory->define(App\Tag::class, function (Faker\Generator $faker) {

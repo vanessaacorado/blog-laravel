@@ -10,9 +10,13 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::controllers([
+	'auth'=>'Auth\AuthController',
+	'password'=>'Auth\PasswordController',
+]);
 Route::get('/',['as' =>'index','uses'=> "PostC@index"]);
-Route::group(['prefix'=>'admin'], function () {
+Route::get('home',['as' =>'index','uses'=> "PostC@index"]);
+Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function () {
 
 Route::get('/', ['as'=>'admin.index', 'uses'=>'PostsAdminC@index']);
 Route::get('create', ['as'=>'admin.create', 'uses'=>'PostsAdminC@create']);

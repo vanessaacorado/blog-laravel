@@ -5,6 +5,7 @@ use App\Post;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use Illuminate\HttpResponse;
+use Illuminate\Http\Request;
 class PostsAdminC extends Controller
 {
       private $post;
@@ -40,7 +41,8 @@ class PostsAdminC extends Controller
     
     }
     public function update($id, PostRequest $request) {
-   	$post=$this->post->find($id)->update($request->all());
+   	$this->post->find($id)->update($request->all());
+		$post=$this->post->find($id);		
 		$post->tags()->sync($this->getTagsIds($request->tag));   	
    	return redirect()->route('admin.index'); 	
 	}
@@ -58,4 +60,16 @@ class PostsAdminC extends Controller
         }	
         return $tagIDs;
 }
+
+	public function auth(){
+		$user = \App\User::find(1);
+		Auth::login($user);
+		if(Auth::check()){
+			return "Oi";		
+		}
+		}
+		public function Logout(){
+		Auth::logout();
+	
+	}
 }

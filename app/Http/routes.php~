@@ -10,12 +10,22 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+Route::post('auth/login',['as' =>'login','uses'=> "Auth\AuthController@postLogin"]);
+Route::get('auth/login',['as' =>'login','uses'=> "Auth\AuthController@getLogin"]);
+Route::get('auth/logout',['as' =>'logout','uses'=> "Auth\AuthController@getLogout"]);
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('/',['as' =>'index','uses'=> "PostC@index"]);
-Route::get('admin', ['as'=>'admin.index', 'uses'=>'PostsAdminC@index']);
-Route::get('admin/create', ['as'=>'admin.create', 'uses'=>'PostsAdminC@create']);
-Route::post('admin/store', ['as'=>'admin.store', 'uses'=>'PostsAdminC@store']);
-Route::get('admin/edit/{id}', ['as'=>'admin.edit', 'uses'=>'PostsAdminC@edit']);
-Route::put('admin/update/{id}', ['as'=>'admin.update', 'uses'=>'PostsAdminC@update']);
-Route::get('admin/destroy/{id}', ['as'=>'admin.destroy', 'uses'=>'PostsAdminC@destroy']);
+Route::get('home',['as' =>'index','uses'=> "PostC@index"]);
+Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function () {
+
+Route::get('/', ['as'=>'admin.index', 'uses'=>'PostsAdminC@index']);
+Route::get('create', ['as'=>'admin.create', 'uses'=>'PostsAdminC@create']);
+Route::post('store', ['as'=>'admin.store', 'uses'=>'PostsAdminC@store']);
+Route::get('edit/{id}', ['as'=>'admin.edit', 'uses'=>'PostsAdminC@edit']);
+Route::put('update/{id}', ['as'=>'admin.update', 'uses'=>'PostsAdminC@update']);
+Route::get('destroy/{id}', ['as'=>'admin.destroy', 'uses'=>'PostsAdminC@destroy']);
+
+
+});
 	

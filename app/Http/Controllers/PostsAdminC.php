@@ -5,6 +5,8 @@ use App\Post;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use Illuminate\HttpResponse;
+use Illuminate\Http\Request;
+use Auth;
 class PostsAdminC extends Controller
 {
       private $post;
@@ -59,4 +61,16 @@ class PostsAdminC extends Controller
         }	
         return $tagIDs;
 }
+
+	public function auth(){
+		$user = \App\User::find(1);
+		Auth::login($user);
+		if(Auth::check()){
+			return "Oi";		
+		}
+		}
+		public function Logout(){
+		Auth::logout();
+	
+	}
 }
