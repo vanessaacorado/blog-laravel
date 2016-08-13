@@ -11,6 +11,13 @@
    
     {!! Form::open(['method'=>'post', 'route'=>'admin.store']) !!}
     @include('posts._form');
+    
+	 <div id="form-group">
+        {!! Form::label('tag','Tags') !!}
+        {!! Form::textarea('tag', null, ['class'=>'form-control']) !!}
+        
+    </div>
+    
     <div id="form-group">
         {!! Form::submit('Criar Novo Post',['class'=>'btn btn-primary']) !!}
 

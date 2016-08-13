@@ -12,10 +12,15 @@
 */
 
 Route::get('/',['as' =>'index','uses'=> "PostC@index"]);
-Route::get('admin', ['as'=>'admin.index', 'uses'=>'PostsAdminC@index']);
-Route::get('admin/create', ['as'=>'admin.create', 'uses'=>'PostsAdminC@create']);
-Route::post('admin/store', ['as'=>'admin.store', 'uses'=>'PostsAdminC@store']);
-Route::get('admin/edit/{id}', ['as'=>'admin.edit', 'uses'=>'PostsAdminC@edit']);
-Route::put('admin/update/{id}', ['as'=>'admin.update', 'uses'=>'PostsAdminC@update']);
-Route::get('admin/destroy/{id}', ['as'=>'admin.destroy', 'uses'=>'PostsAdminC@destroy']);
+Route::group(['prefix'=>'admin'], function () {
+
+Route::get('/', ['as'=>'admin.index', 'uses'=>'PostsAdminC@index']);
+Route::get('create', ['as'=>'admin.create', 'uses'=>'PostsAdminC@create']);
+Route::post('store', ['as'=>'admin.store', 'uses'=>'PostsAdminC@store']);
+Route::get('edit/{id}', ['as'=>'admin.edit', 'uses'=>'PostsAdminC@edit']);
+Route::put('update/{id}', ['as'=>'admin.update', 'uses'=>'PostsAdminC@update']);
+Route::get('destroy/{id}', ['as'=>'admin.destroy', 'uses'=>'PostsAdminC@destroy']);
+
+
+});
 	

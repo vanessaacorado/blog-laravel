@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-use App\Posts;
+use App\Post;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
@@ -13,7 +13,7 @@ class Comment extends Model
     
     public function post(){
         
-        return $this->belongsTo('App\Posts');
+        return $this->belongsTo('App\Post');
         
     }
 }

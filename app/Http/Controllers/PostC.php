@@ -6,13 +6,13 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Posts;
+use App\Post;
 use App\Comment;
 class PostC extends Controller
 {    
     public function index(){
-        $posts = \App\Posts::all();
-        return view('index', compact('posts'));
+        $post = \App\Post::paginate(5);
+        return view('index', compact('post'));
      
     }
  
